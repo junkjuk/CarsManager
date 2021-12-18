@@ -1,3 +1,5 @@
+using carbackend.Data;
+using carbackend.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var context = new CarsContext();
+var car1 = new CarTemplate
+{
+    Model = "a1",
+    Id = "10",
+    Color = "red",
+    Type = "ac"
+};
+
+//context.CarsList.Add(car1);
+//context.SaveChanges();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

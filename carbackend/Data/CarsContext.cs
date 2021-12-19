@@ -12,6 +12,5 @@ namespace carbackend.Data
         }
 
         public DbSet<Car> Cars { get; set; }
-        //public DbSet<CarTemplate> CarsList { get; set; }
     }
 }

@@ -29,9 +29,6 @@ module.exports = {
             },
             '^/test': {
                 target: 'https://localhost:5001'
-            },
-            '^/test/postA': {
-                target: 'https://localhost:5001'
             }
         },
         port: 5002

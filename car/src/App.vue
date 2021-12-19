@@ -1,19 +1,25 @@
 <template>
   <div id="app">
     <AddCar></AddCar>
-    <CarList msg="Welcome to Your Vue.js App"/>
+    <DeleteCar></DeleteCar>
+    <CarList></CarList>
+    <UpdateCar></UpdateCar>
   </div>
 </template>
 
 <script>
 import CarList from './components/CarList.vue'
 import AddCar from "./components/AddCar";
+import DeleteCar from "./components/DeleteCar";
+import UpdateCar from "./components/UpdateCar";
 
 export default {
   name: 'App',
   components: {
     CarList,
-    AddCar
+    AddCar,
+    DeleteCar,
+    UpdateCar
   }
 }
 </script>

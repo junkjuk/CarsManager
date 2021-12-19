@@ -1,5 +1,5 @@
 <template>
-    <div class="all post">
+    <div class="all">
         <div v-if="loading" class="loading">
             Loading...
         </div>

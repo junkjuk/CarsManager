@@ -11,14 +11,11 @@ namespace carbackend.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private static string name = "qwer";
-        private static int age = 12;
         [HttpGet]
         public Car[] asd()
         {
             var context = new CarsContext();
             var c = context.Cars;
-            Console.WriteLine("112233");
             return c.ToArray();
         }
 
@@ -28,9 +25,31 @@ namespace carbackend.Controllers
             var context = new CarsContext();
             context.Cars.Add(c);
             context.SaveChanges();
-            Console.WriteLine($"{c.Id} {c.Model} {c.Color} {c.Numberplate}");
             var a = "Success";
             return a;
+        }
+
+        [HttpPut("{id}")]
+        public void UpdateCar(string id, Car car)
+        {
+            Console.WriteLine("Put request");
+            var context = new CarsContext();
+            var updatedCar = context.Cars.Find(id);
+            updatedCar.Color = car.Color;
+            updatedCar.Model = car.Model;
+            updatedCar.Numberplate = car.Numberplate;
+            context.SaveChanges();
+            Console.WriteLine($"Updated:\n{updatedCar.Id} {updatedCar.Model} {updatedCar.Color} {updatedCar.Numberplate}");
+        }
+
+        [HttpDelete("{id}") ]
+        public void DeleteCar(string id)
+        {
+            var context = new CarsContext();
+            var delCar = context.Cars.Find(id);
+            context.Cars.Remove(delCar);
+            context.SaveChanges();  
+            Console.WriteLine($"Deleted:\n{delCar.Id} {delCar.Model} {delCar.Color} {delCar.Numberplate}");
         }
     }
 }

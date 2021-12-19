@@ -20,6 +20,7 @@
                         <td>{{ car.color }}</td>
                         <td>{{ car.model }}</td>
                         <td>{{ car.numberplate }}</td>
+                        <td><button @click="DeleteCar(car.id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -29,6 +30,7 @@
 
 <script lang="js">
     import Vue from 'vue';
+    import axios from "axios";
 
     const a1 = {
       name:'qwe',
@@ -51,14 +53,6 @@
             '$route': 'fetchData'
         },
         methods: {
-            async postData() {
-              const res = await fetch('test', {
-                method: 'POST',
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(a1)
-              });
-              console.log(res.json)
-            },
             fetchData() {
                 this.post = null;
                 this.loading = true;
@@ -71,14 +65,12 @@
                         console.log(json);
                         return;
                     });
-                fetch('weatherforecast')
-                    .then(r => r.json())
-                    .then(json => {
-                        this.post = json;
-                        this.loading = false;
-                        return;
-                    });
+            },
+            DeleteCar(){
+                axios.delete('test/'+this.CarId).then(res => {
+                    console.log(res)
+                })
             }
-        },
+        }
     });
 </script>

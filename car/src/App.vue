@@ -2,8 +2,8 @@
   <div id="app">
     <AddCar></AddCar>
     <DeleteCar></DeleteCar>
-    <CarList></CarList>
     <UpdateCar></UpdateCar>
+    <CarList></CarList>
   </div>
 </template>
 

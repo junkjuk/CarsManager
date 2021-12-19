@@ -33,11 +33,6 @@ export default {
       axios.delete('test/'+this.CarId).then(res => {
         console.log(res)
       })
-    },
-    UpdateCar(){
-      axios.put('test/'+this.Car.Id, this.Car).then(res => {
-        console.log(res)
-      })
     }
   }
 

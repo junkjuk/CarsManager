@@ -4,16 +4,14 @@ import VueRouter from "vue-router"
 import DeleteCar from "./components/DeleteCar";
 import AddCar from "./components/AddCar";
 import UpdateCar from "./components/UpdateCar";
-import CarList from "./components/CarList";
+import styles from "../uikit/css/uikit.min.css"
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 const routes = [
   {path: '/delete', component: DeleteCar},
   {path: '/add', component: AddCar},
-  {path: '/update', component: UpdateCar},
-  {path: '', component: CarList},
-  {path: '/list', component: CarList},
+  {path: '/update', component: UpdateCar}
 ];
 
 const router = new VueRouter({

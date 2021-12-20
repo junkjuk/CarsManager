@@ -40,8 +40,7 @@
                 testData: null
             };
         },
-        created() {
-            console.log("ASD")
+      created() {
             this.fetchData();
 
         },

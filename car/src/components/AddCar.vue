@@ -1,15 +1,25 @@
 <template>
 <div class="all">
   <h1>Create car</h1>
-  <form @submit.prevent = "PostData11">
+  <form @submit.prevent = "PostData11" class="uk-form-stacked">
     <div class="input-field">
-
-      <input type="text" name="Id" placeholder="Id" v-model="Car.Id"><br>
-      <input type="text" name="Model" placeholder="Model" v-model="Car.Model"><br>
-      <input type="text" name="Color" placeholder="Color" v-model="Car.Color"><br>
-      <input type="text" name="Type" placeholder="Type" v-model="Car.Type"><br>
-
-      <input type="submit">
+      <div class="uk-margin">
+        <label for="Id" class="uk-form-label">Номер машини</label>
+        <input type="text" id="Id" name="Id" placeholder="Numberplate" v-model="Car.Id" class="uk-input uk-width-medium uk-form-controls">
+      </div>
+      <div class="uk-margin">
+        <label for="Model" class="uk-form-label">Модель машини</label>
+        <input type="text" name="Model" placeholder="Model" v-model="Car.Model" class="uk-input uk-width-medium uk-form-controls">
+      </div>
+      <div class="uk-margin">
+        <label for="Color" class="uk-form-label">Колір машини</label>
+        <input type="text" name="Color" placeholder="Color" v-model="Car.Color" class="uk-input uk-width-medium uk-form-controls">
+      </div>
+      <div class="uk-margin">
+        <label for="Type" class="uk-form-label">Тип машини</label>
+        <input type="text" name="Type" placeholder="Type" v-model="Car.Type" class="uk-input uk-width-medium uk-form-controls">
+      </div>
+      <input type="submit" class="uk-button uk-button-default" value="Create">
     </div>
   </form>
 
@@ -33,10 +43,15 @@ export default {
     };
   },
   methods: {
-    PostData11(){
-      axios.post('carlist',this.Car).then(res=>{
+    async PostData11(){
+      await axios.post('carlist',this.Car).then(res=>{
         console.log(res)
       })
+      this.Car.Type = '';
+      this.Car.Id = '';
+      this.Car.Model = '';
+      this.Car.Color = '';
+      this.$emit('dataRefreshEvent')
     }
   }
 }

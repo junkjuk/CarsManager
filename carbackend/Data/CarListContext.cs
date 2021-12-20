@@ -8,7 +8,7 @@ namespace carbackend.Data
     public class CarListContext : DbContext
     {
         public CarListContext()
-           : base("TestNewContext")
+           : base("CarsDB")
         {
             Console.WriteLine("Context created");
         }

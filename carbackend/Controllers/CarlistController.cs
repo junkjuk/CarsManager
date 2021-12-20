@@ -9,20 +9,20 @@ namespace carbackend.Controllers
     
     [ApiController]
     [Route("[controller]")]
-    public class TestController : ControllerBase
+    public class CarlistController : ControllerBase
     {
         [HttpGet]
-        public Car[] asd()
+        public CarTemplate[] asd()
         {
-            var context = new CarsContext();
+            var context = new CarListContext();
             var c = context.Cars;
             return c.ToArray();
         }
 
         [HttpPost]
-        public string Test([FromBody]Car c)
+        public string Test([FromBody] CarTemplate c)
         {
-            var context = new CarsContext();
+            var context = new CarListContext();
             context.Cars.Add(c);
             context.SaveChanges();
             var a = "Success";
@@ -30,26 +30,26 @@ namespace carbackend.Controllers
         }
 
         [HttpPut("{id}")]
-        public void UpdateCar(string id, Car car)
+        public void UpdateCar(string id, CarTemplate car)
         {
             Console.WriteLine("Put request");
-            var context = new CarsContext();
+            var context = new CarListContext();
             var updatedCar = context.Cars.Find(id);
             updatedCar.Color = car.Color;
             updatedCar.Model = car.Model;
-            updatedCar.Numberplate = car.Numberplate;
+            updatedCar.Type = car.Type;
             context.SaveChanges();
-            Console.WriteLine($"Updated:\n{updatedCar.Id} {updatedCar.Model} {updatedCar.Color} {updatedCar.Numberplate}");
+            Console.WriteLine($"Updated:\n{updatedCar.Id} {updatedCar.Model} {updatedCar.Color} {updatedCar.Type}");
         }
 
         [HttpDelete("{id}") ]
         public void DeleteCar(string id)
         {
-            var context = new CarsContext();
+            var context = new CarListContext();
             var delCar = context.Cars.Find(id);
             context.Cars.Remove(delCar);
             context.SaveChanges();  
-            Console.WriteLine($"Deleted:\n{delCar.Id} {delCar.Model} {delCar.Color} {delCar.Numberplate}");
+            Console.WriteLine($"Deleted:\n{delCar.Id} {delCar.Model} {delCar.Color} {delCar.Type}");
         }
     }
 }

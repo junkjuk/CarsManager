@@ -7,7 +7,7 @@
       <input type="text" name="Id" placeholder="Id" v-model="Car.Id"><br>
       <input type="text" name="Model" placeholder="Model" v-model="Car.Model"><br>
       <input type="text" name="Color" placeholder="Color" v-model="Car.Color"><br>
-      <input type="text" name="Numberplate" placeholder="Numberplate" v-model="Car.Numberplate"><br>
+      <input type="text" name="Type" placeholder="Type" v-model="Car.Type"><br>
 
       <input type="submit">
     </div>
@@ -28,13 +28,13 @@ export default {
         Id:'',
         Model:'',
         Color:'',
-        Numberplate:''
+        Type:''
       }
     };
   },
   methods: {
     PostData11(){
-      axios.post('test',this.Car).then(res=>{
+      axios.post('carlist',this.Car).then(res=>{
         console.log(res)
       })
     }

@@ -4,7 +4,7 @@
             Loading...
         </div>
 
-        <div v-if="post" class="content">
+        <div v-if="testData" class="content">
             <table>
                 <thead>
                     <tr>
@@ -19,7 +19,7 @@
                         <td>{{ car.id}}</td>
                         <td>{{ car.color }}</td>
                         <td>{{ car.model }}</td>
-                        <td>{{ car.numberplate }}</td>
+                        <td>{{ car.type }}</td>
                         <td><button @click="DeleteCar(car.id)">Delete</button></td>
                     </tr>
                 </tbody>
@@ -32,10 +32,6 @@
     import Vue from 'vue';
     import axios from "axios";
 
-    const a1 = {
-      name:'qwe',
-      age:'12'
-    }
     export default Vue.extend({
         data() {
             return {
@@ -53,24 +49,27 @@
             '$route': 'fetchData'
         },
         methods: {
+
             fetchData() {
                 this.post = null;
                 this.loading = true;
                 this.testData = null;
-                fetch('test')
+                fetch('carlist')
                     .then(r => r.json())
                     .then(json => {
+
                         this.testData = json;
                         this.loading = false;
                         console.log(json);
                         return;
                     });
             },
-            DeleteCar(){
-                axios.delete('test/'+this.CarId).then(res => {
-                    console.log(res)
-                })
+            async DeleteCar(Id) {
+              await axios.delete('carlist/' + Id).then(res => {
+                console.log(res);
+              })
+              this.fetchData();
             }
-        }
+        },
     });
 </script>

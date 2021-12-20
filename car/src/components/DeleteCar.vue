@@ -19,18 +19,12 @@ export default {
   name: "DeleteCar",
   data() {
     return {
-      CarId: '',
-      Car: {
-        Id:'',
-        Model:'',
-        Color:'',
-        Numberplate:''
-      }
+      CarId: ''
     };
   },
   methods: {
     DeleteCar(){
-      axios.delete('test/'+this.CarId).then(res => {
+      axios.delete('carlist/'+this.CarId).then(res => {
         console.log(res)
       })
     }

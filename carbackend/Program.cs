@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var context = new CarsContext();
+var context = new CarListContext();
 var car1 = new CarTemplate
 {
     Model = "a1",
@@ -22,7 +22,7 @@ var car1 = new CarTemplate
     Type = "ac"
 };
 
-//context.CarsList.Add(car1);
+//context.Cars.Add(car1);
 //context.SaveChanges();
 var app = builder.Build();
 

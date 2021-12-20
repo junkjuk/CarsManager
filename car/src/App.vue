@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <AddCar></AddCar>
-    <DeleteCar></DeleteCar>
-    <UpdateCar></UpdateCar>
+    <router-link to="/list">List</router-link>
+    <router-link to="/add">Add</router-link>
+    <router-link to="/update">Update</router-link>
+    <router-link to="/delete">Delete</router-link>
+
+      <router-view></router-view>
+
+<!--    <AddCar></AddCar>-->
+<!--    <DeleteCar></DeleteCar>-->
+<!--    <UpdateCar></UpdateCar>-->
     <CarList></CarList>
   </div>
 </template>

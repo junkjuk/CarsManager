@@ -29,6 +29,9 @@ module.exports = {
             },
             '^/test': {
                 target: 'https://localhost:5001'
+            },
+            '^/carlist': {
+                target: 'https://localhost:5001'
             }
         },
         port: 5002
